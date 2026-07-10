@@ -17,6 +17,7 @@ public class Post {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "user_id", nullable = false, updatable = false)
   private User user;
 
@@ -36,7 +37,7 @@ public class Post {
   @Column(nullable = false, updatable = false)
   private Instant creationTime;
 
-  public Post(String imagePath, String description, String locationText) {
+  public Post(User user, String imagePath, String description, String locationText) {
     this.user = user;
     this.imagePath = imagePath;
     this.description = description;
