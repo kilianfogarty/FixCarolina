@@ -2,12 +2,11 @@ package com.kilianfogarty.FixCarolina.controller;
 
 import com.kilianfogarty.FixCarolina.dto.PostResponse;
 import com.kilianfogarty.FixCarolina.service.PostService;
-import org.springframework.security.core.Authentication;
+import java.util.List;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/posts")

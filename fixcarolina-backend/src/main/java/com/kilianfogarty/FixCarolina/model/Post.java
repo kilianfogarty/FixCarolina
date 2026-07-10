@@ -34,6 +34,8 @@ public class Post {
   @Column(nullable = false)
   private Status status;
 
+  @Column private String moderationReason;
+
   @Column(nullable = false, updatable = false)
   private Instant creationTime;
 

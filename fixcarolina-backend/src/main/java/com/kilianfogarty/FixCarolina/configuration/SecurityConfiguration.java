@@ -35,7 +35,8 @@ public class SecurityConfiguration {
             auth ->
                 auth.requestMatchers("/auth/**")
                     .permitAll()
-                        .requestMatchers(HttpMethod.GET, "/posts").permitAll() // This is my example for now for the public feed, it will likely
+                    .requestMatchers(HttpMethod.GET, "/posts")
+                    .permitAll() // This is my example for now for the public feed, it will likely
                     // remain the same.
                     .anyRequest()
                     .authenticated())
