@@ -1,4 +1,4 @@
-package com.kilianfogarty.FixCarolina;
+package com.kilianfogarty.FixCarolina.service;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -7,6 +7,11 @@ import java.nio.file.StandardCopyOption;
 import java.util.List;
 import java.util.UUID;
 
+import com.kilianfogarty.FixCarolina.model.Post;
+import com.kilianfogarty.FixCarolina.repository.PostRepository;
+import com.kilianfogarty.FixCarolina.dto.PostResponse;
+import com.kilianfogarty.FixCarolina.model.User;
+import com.kilianfogarty.FixCarolina.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 

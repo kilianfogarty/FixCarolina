@@ -1,4 +1,6 @@
-package com.kilianfogarty.FixCarolina;
+package com.kilianfogarty.FixCarolina.dto;
+
+import com.kilianfogarty.FixCarolina.model.Status;
 
 import java.time.Instant;
 

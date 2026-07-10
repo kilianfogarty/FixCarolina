@@ -1,5 +1,8 @@
-package com.kilianfogarty.FixCarolina;
+package com.kilianfogarty.FixCarolina.service;
 
+import com.kilianfogarty.FixCarolina.security.JwtUtil;
+import com.kilianfogarty.FixCarolina.model.User;
+import com.kilianfogarty.FixCarolina.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

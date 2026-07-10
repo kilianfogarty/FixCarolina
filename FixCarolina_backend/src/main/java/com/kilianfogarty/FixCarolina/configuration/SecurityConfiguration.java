@@ -1,5 +1,6 @@
-package com.kilianfogarty.FixCarolina;
+package com.kilianfogarty.FixCarolina.configuration;
 
+import com.kilianfogarty.FixCarolina.security.JwtAuthFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;

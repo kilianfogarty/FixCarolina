@@ -1,4 +1,4 @@
-package com.kilianfogarty.FixCarolina;
+package com.kilianfogarty.FixCarolina.model;
 
 public enum Status {
   PENDING,

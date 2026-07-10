@@ -1,4 +1,4 @@
-package com.kilianfogarty.FixCarolina;
+package com.kilianfogarty.FixCarolina.security;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

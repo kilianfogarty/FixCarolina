@@ -1,4 +1,4 @@
-package com.kilianfogarty.FixCarolina;
+package com.kilianfogarty.FixCarolina.security;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;

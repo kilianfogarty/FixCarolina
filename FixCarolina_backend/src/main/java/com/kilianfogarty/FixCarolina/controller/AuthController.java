@@ -1,5 +1,9 @@
-package com.kilianfogarty.FixCarolina;
+package com.kilianfogarty.FixCarolina.controller;
 
+import com.kilianfogarty.FixCarolina.dto.AuthResponse;
+import com.kilianfogarty.FixCarolina.service.AuthService;
+import com.kilianfogarty.FixCarolina.dto.LoginRequest;
+import com.kilianfogarty.FixCarolina.dto.RegisterRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

@@ -1,4 +1,4 @@
-package com.kilianfogarty.FixCarolina;
+package com.kilianfogarty.FixCarolina.model;
 
 import jakarta.persistence.*;
 import java.time.Instant;

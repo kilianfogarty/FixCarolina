@@ -1,3 +1,3 @@
-package com.kilianfogarty.FixCarolina;
+package com.kilianfogarty.FixCarolina.dto;
 
 public record AuthResponse(String token) {}
