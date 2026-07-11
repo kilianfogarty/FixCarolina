@@ -11,26 +11,26 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 @RequestMapping("/posts")
 public class PostController {
-    private final PostService postService;
+  private final PostService postService;
 
-    public PostController(PostService postService) {
-        this.postService = postService;
-    }
+  public PostController(PostService postService) {
+    this.postService = postService;
+  }
 
-    @PostMapping
-    public ResponseEntity<PostResponse> createPost(
-            @RequestParam("image") MultipartFile image,
-            @RequestParam("description") String description,
-            @RequestParam("locationText") String locationText,
-            Authentication authentication) {
+  @PostMapping
+  public ResponseEntity<PostResponse> createPost(
+      @RequestParam("image") MultipartFile image,
+      @RequestParam("description") String description,
+      @RequestParam("locationText") String locationText,
+      Authentication authentication) {
 
-        String username = authentication.getName();
-        PostResponse response = postService.createPost(username, image, description, locationText);
-        return ResponseEntity.ok(response);
-    }
+    String username = authentication.getName();
+    PostResponse response = postService.createPost(username, image, description, locationText);
+    return ResponseEntity.ok(response);
+  }
 
-    @GetMapping
-    public ResponseEntity<List<PostResponse>> getAllPosts() {
-        return ResponseEntity.ok(postService.getAllPosts());
-    }
+  @GetMapping
+  public ResponseEntity<List<PostResponse>> getAllPosts() {
+    return ResponseEntity.ok(postService.getAllPosts());
+  }
 }

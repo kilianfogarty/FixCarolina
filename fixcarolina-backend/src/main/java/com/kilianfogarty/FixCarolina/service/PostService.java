@@ -18,13 +18,16 @@ import org.springframework.web.multipart.MultipartFile;
 @Service
 public class PostService {
 
-    // Temp until I get supabase image storage and postgres hooked up.
+  // Temp until I get supabase image storage and postgres hooked up.
   private static final String UPLOAD_DIRECTORY = "src/main/resources/static/uploads/";
   private final PostRepository postRepository;
   private final UserRepository userRepository;
   private final ModerationService moderationService;
 
-  public PostService(PostRepository postRepository, UserRepository userRepository, ModerationService moderationService) {
+  public PostService(
+      PostRepository postRepository,
+      UserRepository userRepository,
+      ModerationService moderationService) {
     this.postRepository = postRepository;
     this.userRepository = userRepository;
     this.moderationService = moderationService;
@@ -43,8 +46,8 @@ public class PostService {
 
     Post post = new Post(user, savedPath, description, locationText);
 
-    post.setStatus(result.approved() ? Status.APPROVED : Status.BLOCKED);
-    post.setModerationReason(moderationResult.moderationReason());
+    post.setStatus(moderationResult.approved() ? Status.APPROVED : Status.BLOCKED);
+    post.setModerationReason(moderationResult.reason());
 
     Post saved = postRepository.save(post);
 
@@ -56,37 +59,36 @@ public class PostService {
   }
 
   private PostResponse toResponse(Post post) {
-      return new PostResponse(
-              post.getId(),
-              post.getUser().getUsername(),
-              post.getImagePath(),
-              post.getDescription(),
-              post.getLocationText(),
-              post.getStatus(),
-              post.getCreationTime()
-      );
+    return new PostResponse(
+        post.getId(),
+        post.getUser().getUsername(),
+        post.getImagePath(),
+        post.getDescription(),
+        post.getLocationText(),
+        post.getStatus(),
+        post.getCreationTime());
   }
 
-    private String saveImage(MultipartFile image) {
-        try {
-            Files.createDirectories(Path.of(UPLOAD_DIRECTORY));
+  private String saveImage(MultipartFile image) {
+    try {
+      Files.createDirectories(Path.of(UPLOAD_DIRECTORY));
 
-            String extension = getExtension(image.getOriginalFilename());
-            String filename = UUID.randomUUID() + extension;
-            Path destination = Path.of(UPLOAD_DIRECTORY + filename);
+      String extension = getExtension(image.getOriginalFilename());
+      String filename = UUID.randomUUID() + extension;
+      Path destination = Path.of(UPLOAD_DIRECTORY + filename);
 
-            Files.copy(image.getInputStream(), destination, StandardCopyOption.REPLACE_EXISTING);
+      Files.copy(image.getInputStream(), destination, StandardCopyOption.REPLACE_EXISTING);
 
-            return "/uploads/" + filename;
-        } catch (IOException e) {
-            throw new RuntimeException("Failed to save image", e);
-        }
+      return "/uploads/" + filename;
+    } catch (IOException e) {
+      throw new RuntimeException("Failed to save image", e);
     }
+  }
 
-    private String getExtension(String originalFilename) {
-        if (originalFilename == null || !originalFilename.contains(".")) {
-            return "";
-        }
-        return originalFilename.substring(originalFilename.lastIndexOf('.'));
+  private String getExtension(String originalFilename) {
+    if (originalFilename == null || !originalFilename.contains(".")) {
+      return "";
     }
+    return originalFilename.substring(originalFilename.lastIndexOf('.'));
+  }
 }
